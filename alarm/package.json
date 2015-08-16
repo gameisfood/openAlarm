@@ -10,6 +10,8 @@
   "license": "ISC",
   "dependencies": {
     "redis": "*",
-    "node-mpg123": "*"
+    "node-mpg123": "*",
+    "delayed": "*",
+    "cron":"*"
   }
 }
