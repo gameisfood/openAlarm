@@ -1,7 +1,7 @@
 var redis = require('redis') ,
     settings = require('../settings.js');
 var Player = require('node-mpg123'),
-    player = new Player('../woodKid.mp3');
+    player = new Player('../woodKid1.mp3');
 
 
 var ring = function(id) {
