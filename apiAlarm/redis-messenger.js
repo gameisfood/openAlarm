@@ -22,13 +22,14 @@ exports.addNewAlarm = function(alarmProperties) {
 };
 
 exports.getAlarmByID = function(alarmID) {
-  client.get("alarmID", function (err, reply) {
+  client.get(alarmID, function (err, reply) {
     console.log(reply);
+    return reply;
   });
 };
 
 exports.deleteAlarmByID = function(alarmID) {
-  client.del("alarmID", function (err, reply) {
+  client.del(alarmID, function (err, reply) {
     console.log(reply);
   });
 };
