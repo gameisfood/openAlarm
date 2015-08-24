@@ -3,7 +3,8 @@ console.log("server.js : Starting api server");
 var express = require('express');
 var app = express();
 var router = express.Router();
-var port = 9000;
+var settings = require('../shared_resources/settings.js')
+var port = settings.API_PORT;
 var alarm_util = require("./redis-messenger.js");
 var alarmTemplateJSON = require("../shared_resources/alarmTemplate.json");
 var bodyParser = require('body-parser');
@@ -19,7 +20,7 @@ app.get('/api', function(req, res){
 var serveTemplate = router.route('/alarm/template');
 serveTemplate.get(function(req, res) {
   res.json(alarmTemplateJSON);
-})
+});
 
 var addAlarm = router.route('/alarm/add');
 console.log("server.js : handling creating of alarm");
@@ -33,9 +34,16 @@ var getAlarm = router.route('/alarm/id/:id');
 getAlarm.get(function(req, res) {
   var alarmID = req.params.id;
   console.log("server.js : getting alarm with id : " + alarmID);
-  res.json(alarm_util.getAlarmByID(alarmID));
+  alarm_util.getAlarmByID(alarmID,res);
+});
+
+var getAllAlarms = router.route('/alarm/all');
+getAllAlarms.get(function(req, res) {
+
+  alarm_util.getAllAlarms(res);
+
 });
 
 app.use('/api', router)
-console.log("server.js : Running on Port " + port);
+console.log("server.js  :  Running on Port " + port);
 app.listen(port);
