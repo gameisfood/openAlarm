@@ -9,6 +9,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "*"
+    "body-parser": "^1.13.3",
+    "express": "*",
+    "redis": "^0.12.1"
   }
 }
